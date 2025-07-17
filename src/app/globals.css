@@ -1,26 +1,72 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
 @import "tailwindcss";
+@plugin "@tailwindcss/typography";
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
-}
+@custom-variant dark (&:where(.dark, .dark *));
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+@theme {
+  /* Light Mode */
+  --color-background: #fef3c7;
+  --color-foreground: #111827;
+  --color-background-offset: #f3f4f5;
+  --color-foreground-offset: #374151;
+  --color-primary: #fde68a;
+  --color-primary-offset: #e0f2e4;
+
+  /* Dark Mode */
+  --dark-color-background: #312e81;
+  --dark-color-foreground: #e0e7ff;
+  --dark-color-background-offset: #4338ca;
+  --dark-color-foreground-offset: #c7d2fe;
+  --dark-color-primary: #818cf8;
+  --dark-color-primary-offset: #6366f1;
 }
 
 @media (prefers-color-scheme: dark) {
   :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+    --color-background: var(--dark-color-background);
+    --color-foreground: var(--dark-color-foreground);
+    --color-background-offset: var(--dark-color-background-offset);
+    --color-foreground-offset: var(--dark-color-foreground-offset);
+    --color-primary: var(--dark-color-primary);
+    --color-primary-offset: var(--dark-color-primary-offset);
   }
 }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  color: var(--color-foreground);
+  background-color: var(--color-background);
+  font-family: "Inter", sans-serif;
 }
+
+@layer utilities {
+  .text-balance {
+    text-wrap: balance;
+  }
+
+  .offset-color {
+    color: var(--color-foreground-offset);
+    background-color: var(--color-background-offset);
+  }
+
+  .link-hover {
+    &:hover {
+      @apply text-xl underline decoration-2 underline-offset-2;
+    }
+  }
+
+  .prose-custom {
+    @apply prose prose-headings:text-foreground prose-p:text-foreground prose-a:text-foreground 
+          prose-strong:text-foreground prose-ol:text-foreground prose-ul:text-foreground
+          dark:prose-headings:text-foreground dark:prose-p:text-foreground dark:prose-a:text-foreground
+          dark:prose-strong:text-foreground dark:prose-ol:text-foreground dark:prose-ul:text-foreground;
+  }
+}
+
+@container (width > 528px) {
+  h1 {
+    font-size: 4em;
+  }
+}
+
+
