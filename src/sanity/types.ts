@@ -12,7 +12,7 @@
  * ---------------------------------------------------------------------------------
  */
 
-// Source: schema.json
+// Source: extract.json
 export type Post = {
   _id: string;
   _type: "post";
