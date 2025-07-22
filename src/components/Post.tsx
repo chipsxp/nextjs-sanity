@@ -7,6 +7,7 @@ import { POST_QUERYResult } from "@/sanity/types";
 import { PublishedAt } from "@/components/PublishedAt";
 import { Title } from "@/components/Title";
 import { urlFor } from "@/sanity/lib/image";
+import { isImageReady } from "@/sanity/lib/image-validation";
 import Image from "next/image";
 import Link from "next/link";
 
@@ -33,7 +34,7 @@ export function Post(props: NonNullable<POST_QUERYResult>) {
         <Author author={author} />
       </header>
       
-      {mainImage ? (
+      {isImageReady(mainImage) ? (
         <figure className="lg:col-span-4 flex flex-col gap-2 items-start">
           <Image
             src={urlFor(mainImage).width(400).height(300).url()}

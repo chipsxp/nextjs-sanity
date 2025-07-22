@@ -2,6 +2,7 @@ import Image from "next/image";
 import { urlFor } from "@/sanity/lib/image";
 import { PAGE_QUERYResult } from "@/sanity/types";
 import { stegaClean } from "next-sanity";
+import { isImageReady } from "@/sanity/lib/image-validation";
 
 type SplitImageProps = Extract<
   NonNullable<NonNullable<PAGE_QUERYResult>["content"]>[number],
@@ -14,7 +15,7 @@ export function SplitImage({ title, image, orientation }: SplitImageProps) {
       className="container mx-auto flex gap-8 py-16 data-[orientation='imageRight']:flex-row-reverse"
       data-orientation={stegaClean(orientation) || "imageLeft"}
     >
-      {image ? (
+      {isImageReady(image) ? (
         <Image
           className="rounded-xl w-2/3 h-auto"
           src={urlFor(image).width(800).height(600).url()}

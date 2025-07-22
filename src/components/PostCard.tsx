@@ -3,6 +3,7 @@ import { Categories } from "@/components/Categories";
 import { POSTS_QUERYResult } from "@/sanity/types";
 import { PublishedAt } from "@/components/PublishedAt";
 import { urlFor } from "@/sanity/lib/image";
+import { isImageReady } from "@/sanity/lib/image-validation";
 import Image from "next/image";
 import Link from "next/link";
 
@@ -28,7 +29,7 @@ export function PostCard(props: POSTS_QUERYResult[0]) {
           </div>
         </div>
         <div className="sm:col-start-9 sm:col-span-4 md:col-start-9 md:col-span-4 rounded-lg ml-2 flex">
-          {mainImage ? (
+          {isImageReady(mainImage) ? (
             <Image
               src={urlFor(mainImage).width(600).height(400).url()}
               width={600}

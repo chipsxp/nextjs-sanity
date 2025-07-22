@@ -13,5 +13,20 @@ export const faqType = defineType({
           name: "body",
           type: "blockContent",
      }),
+     defineField({
+          name: "image",
+          type: "image",
+          title: "FAQ Image",
+          options: {
+            hotspot: true,
+          },
+          fields: [
+            {
+              name: "alt",
+              type: "string",
+              title: "Alternative Text",
+            }
+          ]
+     }),
      ],
 });

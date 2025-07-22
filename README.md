@@ -2,6 +2,8 @@
 
 A modern, full-stack blog application built with Next.js 15 and Sanity Studio, featuring embedded content management, responsive design, and optimized performance.
 
+> **📋 IMPORTANT**: If you're on the **pagebuilder** branch, please read [README-PAGEBUILDER.md](./README-PAGEBUILDER.md) for detailed information about the PageBuilder extension, component architecture, and advanced content management features.
+
 ## 🚀 Quick Start
 
 ### Prerequisites
